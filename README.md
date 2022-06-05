@@ -10,7 +10,7 @@ and applies (rough) NLP in order to extract the area and containment of a fire g
 incident ID.
 
 It also supports invocation through the command line to plot the area and containment of a
-single fire.
+single fire, or dump that fire's data to CSV.
 
 ## Usage: library
 
@@ -27,12 +27,19 @@ The ID 8103 comes from the URL of the incident page, e.g.
 ## Usage: command line
 
 ```sh
-$ python3 -m inciweb_timeseries_scraper 8103
-# displays a plot of the area and containment time series
+# display a plot of the area and containment time series
+$ python3 -m inciweb_timeseries_scraper plot 8103
+
+# plot to file
+$ python3 -m inciweb_timeseries_scraper plot 8103 -o black_fire.png
+
+# save data to csv
+$ python3 -m inciweb_timeseries_scraper csv 8103 -o black_fire.csv
 ```
 
 ## Caveats:
 
 - The data posted on InciWeb comes from different sources and the NLP techniques I'm using rely on
 some heuristics that might not work for all events.
-- This will break immediately if the HTML of InciWeb changes
+- This will break immediately if the HTML of InciWeb changes.
+- Making many automated requests like this may eventually cause you to get blocked or throttled.
