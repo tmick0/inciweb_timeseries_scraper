@@ -1,0 +1,7 @@
+beautifulsoup4>=4.11,<5
+requests>=2.27,<3
+numpy>=1.22,<2
+nltk>=3.7,<4
+datefinder>=0.7.1,<0.8
+word2number>=1.1,<2
+matplotlib>=3.5,<4
