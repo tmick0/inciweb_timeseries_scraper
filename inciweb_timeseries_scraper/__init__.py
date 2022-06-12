@@ -30,11 +30,13 @@ def get_one_page_links(incident, offset):
     soup = BeautifulSoup(data.content, "html.parser")
     name = soup.find("h1").text
     links = soup.find_all("a", class_="feed-headline")
-    nav = soup.find("nav", class_="nav-pagination").find("p")
-    first, last, total = map(lambda e: int(e.text), nav.find_all("strong"))
     next_page = None
-    if last < total:
-        next_page = last
+    nav = soup.find("nav", class_="nav-pagination")
+    if nav is not None:
+        nav = nav.find("p")
+        first, last, total = map(lambda e: int(e.text), nav.find_all("strong"))
+        if last < total:
+            next_page = last
 
     return name, [(l['href'], l.text) for l in links], next_page
 

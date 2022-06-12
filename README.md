@@ -43,3 +43,5 @@ $ python3 -m inciweb_timeseries_scraper csv 8103 -o black_fire.csv
 some heuristics that might not work for all events.
 - This will break immediately if the HTML of InciWeb changes.
 - Making many automated requests like this may eventually cause you to get blocked or throttled.
+- Some posts that are not actually daily updates may have spurious data extracted from them and thus will
+  need to be manually removed.
